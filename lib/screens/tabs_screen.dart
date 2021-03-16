@@ -11,7 +11,7 @@ class TabsScreen extends StatefulWidget {
 
 class _TabsScreenState extends State<TabsScreen> {
   bool _isLoading = true;
-  bool _isPage = false;
+  //bool _isPage = false;
 
   List<Map<String, dynamic>> _pages;
   int _selectedPage = 0;

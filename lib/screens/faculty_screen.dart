@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 
 import '../widgets/faculty_item.dart';
 import '../providers/faculty_list.dart';
+import 'prof_screen.dart';
 
 class FacultyScreen extends StatelessWidget {
   TextStyle textStyle(double size) {
@@ -40,66 +41,87 @@ class FacultyScreen extends StatelessWidget {
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
         )),
-        child: Column(
-          children: <Widget>[
-            Container(
-              margin: EdgeInsets.symmetric(vertical: 5, horizontal: 3),
-              padding: EdgeInsets.symmetric(vertical: 5, horizontal: 3),
-              height: MediaQuery.of(context).size.height * 0.20,
-              child: ElevatedButton(
-                style: ButtonStyle(
-                    backgroundColor:
-                        MaterialStateProperty.all(Color(0xFF9ec1a3))),
-                onPressed: () {
-                  Navigator.of(context).pushNamed(FacultyItem.routeName,
-                      arguments: 'Professors');
-                },
-                child: Center(
-                    child: Text(
-                  'Professors',
-                  style: textStyle(38),
-                )),
+        child: SingleChildScrollView(
+          child: Column(
+            children: <Widget>[
+              Container(
+                margin: EdgeInsets.symmetric(vertical: 5, horizontal: 3),
+                padding: EdgeInsets.symmetric(vertical: 5, horizontal: 3),
+                height: MediaQuery.of(context).size.height * 0.20,
+                child: ElevatedButton(
+                  style: ButtonStyle(
+                      backgroundColor:
+                          MaterialStateProperty.all(Color(0xFF9ec1a3))),
+                  onPressed: () {
+                    Navigator.of(context).pushNamed(ProfScreen.routeName,
+                        arguments: 'Professors');
+                  },
+                  child: Center(
+                      child: Text(
+                    'Professors',
+                    style: textStyle(38),
+                  )),
+                ),
               ),
-            ),
-            Container(
-              margin: EdgeInsets.symmetric(vertical: 5, horizontal: 3),
-              padding: EdgeInsets.symmetric(vertical: 5, horizontal: 3),
-              height: MediaQuery.of(context).size.height * 0.20,
-              child: ElevatedButton(
-                style: ButtonStyle(
-                    backgroundColor:
-                        MaterialStateProperty.all(Color(0xFFefd9ce))),
-                onPressed: () {
-                  Navigator.of(context).pushNamed(FacultyItem.routeName,
-                      arguments: 'Assistant Professors');
-                },
-                child: Center(
-                    child: Text(
-                  'Assistant Professors',
-                  style: textStyle(35),
-                )),
+              Container(
+                margin: EdgeInsets.symmetric(vertical: 5, horizontal: 3),
+                padding: EdgeInsets.symmetric(vertical: 5, horizontal: 3),
+                height: MediaQuery.of(context).size.height * 0.20,
+                child: ElevatedButton(
+                  style: ButtonStyle(
+                      backgroundColor:
+                          MaterialStateProperty.all(Color(0xFFefd9ce))),
+                  onPressed: () {
+                    Navigator.of(context).pushNamed(FacultyItem.routeName,
+                        arguments: 'Assistant Professors');
+                  },
+                  child: Center(
+                      child: Text(
+                    'Assistant Professors',
+                    style: textStyle(35),
+                  )),
+                ),
               ),
-            ),
-            Container(
-              margin: EdgeInsets.symmetric(vertical: 5, horizontal: 3),
-              padding: EdgeInsets.symmetric(vertical: 5, horizontal: 3),
-              height: MediaQuery.of(context).size.height * 0.20,
-              child: ElevatedButton(
-                style: ButtonStyle(
-                    backgroundColor:
-                        MaterialStateProperty.all(Colors.red[200])),
-                onPressed: () {
-                  Navigator.of(context).pushNamed(FacultyItem.routeName,
-                      arguments: 'Doctorate Professors');
-                },
-                child: Center(
-                    child: Text(
-                  'Doctrate Faculties',
-                  style: textStyle(36),
-                )),
+              Container(
+                margin: EdgeInsets.symmetric(vertical: 5, horizontal: 3),
+                padding: EdgeInsets.symmetric(vertical: 5, horizontal: 3),
+                height: MediaQuery.of(context).size.height * 0.20,
+                child: ElevatedButton(
+                  style: ButtonStyle(
+                      backgroundColor:
+                          MaterialStateProperty.all(Colors.red[200])),
+                  onPressed: () {
+                    Navigator.of(context).pushNamed(FacultyItem.routeName,
+                        arguments: 'Doctorate Professors');
+                  },
+                  child: Center(
+                      child: Text(
+                    'Doctrate Faculties',
+                    style: textStyle(36),
+                  )),
+                ),
               ),
-            )
-          ],
+              Container(
+                margin: EdgeInsets.symmetric(vertical: 5, horizontal: 3),
+                padding: EdgeInsets.symmetric(vertical: 5, horizontal: 3),
+                height: MediaQuery.of(context).size.height * 0.20,
+                child: ElevatedButton(
+                  style: ButtonStyle(
+                      backgroundColor:
+                          MaterialStateProperty.all(Color(0xFFefd9ce))),
+                  onPressed: () {
+                    Navigator.of(context).pushNamed(FacultyItem.routeName,
+                        arguments: 'Resources');
+                  },
+                  child: Center(
+                      child: Text(
+                    'Resources',
+                    style: textStyle(35),
+                  )),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

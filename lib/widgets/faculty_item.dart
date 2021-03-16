@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import '../providers/prof_list.dart';
+import '../providers/aprof_list.dart';
+import '../providers/phd_list.dart';
+import '../providers/resources_list.dart';
 
 import '../providers/faculty_list.dart';
 import '../models/faculty.dart';
@@ -12,14 +16,11 @@ class FacultyItem extends StatefulWidget {
 }
 
 class _FacultyItemState extends State<FacultyItem> {
-  List<Faculty> list;
-  bool _isLoading = true;
-  List<Faculty> faculty;
+  bool _isInit = true;
 
-  Future<void> extData(BuildContext context, String type) async {
-    faculty = await Provider.of<FacultyList>(context, listen: false)
-        .getFacultyList(type);
-  }
+  List<Map<String, dynamic>> list;
+  bool _isLoading = true;
+  // List<Faculty> faculty;
 
   int num = 0;
 
@@ -34,27 +35,6 @@ class _FacultyItemState extends State<FacultyItem> {
 
   String type;
   String title;
-  bool _isInit = true;
-
-  @override
-  Future<void> didChangeDependencies() async {
-    if (_isInit) {
-      title = ModalRoute.of(context).settings.arguments as String;
-      if (title.startsWith('Prof')) {
-        type = 'prof';
-      } else if (title.startsWith('Assistant')) {
-        type = 'Aprof';
-      } else if (title.startsWith('Doc')) {
-        type = 'phd';
-      }
-      extData(context, type);
-
-      setState(() {
-        _isLoading = false;
-      });
-      _isInit = false;
-    }
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -74,6 +54,7 @@ class _FacultyItemState extends State<FacultyItem> {
       ]);
     }
 
+    final faculty = [];
     return Scaffold(
       appBar: AppBar(
         title: Text(title),
@@ -106,7 +87,7 @@ class _FacultyItemState extends State<FacultyItem> {
                                   style: Theme.of(context).textTheme.headline4,
                                 ),
                                 Text(
-                                  '${faculty[index].userId}',
+                                  '${faculty[index]['userId']}',
                                   style: Theme.of(context).textTheme.headline3,
                                 )
                               ],
@@ -114,7 +95,7 @@ class _FacultyItemState extends State<FacultyItem> {
                             SizedBox(
                               height: 5,
                             ),
-                            fieldInfo('Name ', faculty[index].name),
+                            fieldInfo('Name ', faculty[index]['name']),
                             SizedBox(
                               height: 8,
                             ),
@@ -125,12 +106,12 @@ class _FacultyItemState extends State<FacultyItem> {
                                 children: [
                                   fieldInfo('Dept', faculty[index].dept),
                                   fieldInfo(
-                                      'Date of Joining ', faculty[index].doj)
+                                      'Date of Joining ', faculty[index]['DoJ'])
                                 ]),
                             SizedBox(
                               height: 8,
                             ),
-                            fieldInfo('Education', faculty[index].edu)
+                            fieldInfo('Education', faculty[index]['education'])
                           ]),
                     ),
                   ),
